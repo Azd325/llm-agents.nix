@@ -309,6 +309,11 @@ inputs."nixpkgs".lib.extend (
         githubId = 22554;
         name = "Lawrence Liu";
       };
+      YuXiangggg = {
+        github = "YuXiangggg";
+        githubId = 101375747;
+        name = "YuXiangggg";
+      };
     };
   }
 )
