@@ -1227,6 +1227,16 @@ Nix packages for AI coding agents and development tools. Automatically updated d
 
 </details>
 <details>
+<summary><strong>treehouse</strong> - Reusable isolated worktree manager for AI agent sessions</summary>
+
+- **Source**: source
+- **License**: MIT
+- **Homepage**: https://github.com/kunchenguid/treehouse
+- **Usage**: `nix run github:numtide/llm-agents.nix#treehouse -- --help`
+- **Nix**: [packages/treehouse/package.nix](packages/treehouse/package.nix)
+
+</details>
+<details>
 <summary><strong>vibe-kanban</strong> - Kanban board to orchestrate AI coding agents like Claude Code, Codex, and Gemini CLI</summary>
 
 - **Source**: source
