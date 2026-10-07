@@ -1197,6 +1197,16 @@ Nix packages for AI coding agents and development tools. Automatically updated d
 
 </details>
 <details>
+<summary><strong>orbi-cli</strong> - Run the Pi coding agent on labeled GitHub issues and merge the reviewed pull requests</summary>
+
+- **Source**: source
+- **License**: AGPL-3.0-only
+- **Homepage**: https://orbi.build
+- **Usage**: `nix run github:numtide/llm-agents.nix#orbi-cli -- --help`
+- **Nix**: [packages/orbi-cli/package.nix](packages/orbi-cli/package.nix)
+
+</details>
+<details>
 <summary><strong>ralph-tui</strong> - AI Agent Loop Orchestrator TUI</summary>
 
 - **Source**: source
