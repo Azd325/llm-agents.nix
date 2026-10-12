@@ -52,6 +52,8 @@ python3.pkgs.buildPythonApplication rec {
     # The child exits at once, and the error can be built before the stderr
     # pump thread has buffered anything; loses the race on loaded builders.
     "test_the_node_warning_is_not_the_headline"
+    # Uses `json` as a module without __main__, but Python 3.14 added one.
+    "test_a_module_without_main_is_not_runnable"
   ];
 
   passthru.category = "Utilities";
