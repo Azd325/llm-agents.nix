@@ -794,16 +794,6 @@ Nix packages for AI coding agents and development tools. Automatically updated d
 
 </details>
 <details>
-<summary><strong>picoclaw</strong> - Tiny, fast, and deployable anywhere — automate the mundane, unleash your creativity</summary>
-
-- **Source**: source
-- **License**: MIT
-- **Homepage**: https://picoclaw.io
-- **Usage**: `nix run github:numtide/llm-agents.nix#picoclaw -- --help`
-- **Nix**: [packages/picoclaw/package.nix](packages/picoclaw/package.nix)
-
-</details>
-<details>
 <summary><strong>vessel-browser</strong> - Agent-oriented browser with durable state and MCP control</summary>
 
 - **Source**: source
