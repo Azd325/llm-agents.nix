@@ -135,11 +135,26 @@ class TestRun(unittest.TestCase):
             {"type": "npm", "package": "@x/y", "tag": "next"},
             {"type": "text", "url": "https://x/v", "regex": r"v(\d+)"},
             {"type": "text", "url": "https://x/v"},  # no regex -> plain body
+            {"type": "json", "url": "https://x/latest.json", "path": "stable.version"},
             {"type": "git-tags", "url": "https://gitea/api/.../tags"},
         ):
             self.assertTrue(callable(_version_getter(source)))
         with self.assertRaises(ValueError):
             _version_getter({"type": "bogus"})
+
+    def test_json_version_follows_the_dotted_path(self) -> None:
+        def fake(_url: str) -> dict[str, Any]:
+            return {"version": "3.0.0", "stable": {"linux": {"version": "2.0.0"}}}
+
+        original = http.fetch_json
+        http.fetch_json = fake  # type: ignore[assignment]
+        try:
+            getter = _version_getter(
+                {"type": "json", "url": "https://x", "path": "stable.linux.version"}
+            )
+            self.assertEqual(getter(), "2.0.0")
+        finally:
+            http.fetch_json = original
 
     def test_git_tags_picks_highest_stripping_v(self) -> None:
         # Patch fetch_json; the getter imports it lazily from updater.http.

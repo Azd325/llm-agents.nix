@@ -66,6 +66,19 @@ def _latest_git_tag(url: str) -> str:
     return max(versions, key=cmp_to_key(compare_versions))
 
 
+def _json_version(url: str, dotted_path: str) -> str:
+    """Return the string at ``dotted_path`` of the JSON document at ``url``."""
+    from .http import fetch_json  # noqa: PLC0415 -- patched in tests
+
+    value: Any = fetch_json(url)
+    for key in dotted_path.split("."):
+        value = value[key]
+    if not isinstance(value, str):
+        msg = f"{dotted_path!r} at {url} is not a string"
+        raise TypeError(msg)
+    return value
+
+
 def _version_getter(source: dict[str, Any]) -> Callable[[], str]:
     """Build the ``fetch_latest`` callable for a versionSource type."""
     from .http import fetch_text  # noqa: PLC0415 -- keep http import lazy
@@ -83,6 +96,8 @@ def _version_getter(source: dict[str, Any]) -> Callable[[], str]:
         if regex:
             return lambda: fetch_version_from_text(url, regex)
         return lambda: fetch_text(url).strip()
+    if source_type == "json":
+        return lambda: _json_version(source["url"], source["path"])
     if source_type == "git-tags":
         url = source["url"]
         return lambda: _latest_git_tag(url)
