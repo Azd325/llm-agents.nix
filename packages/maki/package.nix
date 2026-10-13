@@ -15,16 +15,16 @@
 
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "maki";
-  version = "0.6.0";
+  version = "0.6.3";
 
   src = fetchFromGitHub {
     owner = "tontinton";
     repo = "maki";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-VdnGTPhRw8BMREIfSRCcddecZ8/9Ot8pF2mBADmnx0U=";
+    hash = "sha256-HARWyuE8ajvLORYYbpXPM5E64C8+67auLzMdLM9pxwo=";
   };
 
-  cargoHash = "sha256-GXHkaGcXJnC56QHBws70vj5FaBy3yVIHzPmCoZvSPdo=";
+  cargoHash = "sha256-GUrIXCue02+gjOHML+K4hy5EFr45NyZwcCNcAq77+co=";
 
   # unpinCargoMsrvHook: upstream pins rust-version = "1.99", newer than the
   # rustc in nixpkgs.
