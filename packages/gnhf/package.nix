@@ -4,7 +4,7 @@
   buildNpmPackage,
   fetchFromGitHub,
   fetchPnpmDeps,
-  pnpm,
+  pnpm_11,
   pnpmConfigHook,
   versionCheckHook,
   versionCheckHomeHook,
@@ -24,12 +24,12 @@ buildNpmPackage rec {
   npmDeps = null;
   pnpmDeps = fetchPnpmDeps {
     inherit pname version src;
-    inherit pnpm;
+    pnpm = pnpm_11;
     fetcherVersion = 4;
-    hash = "sha256-vrm0pg43hjGk7hrpk+zE4hUtyBrfVSSqRP3c3zHoJU4=";
+    hash = "sha256-CBjHhN5VxVDl6xOn2fDowPhh22MueNwb5jZ/rmKQ0Tw=";
   };
 
-  nativeBuildInputs = [ pnpm ];
+  nativeBuildInputs = [ pnpm_11 ];
   npmConfigHook = pnpmConfigHook;
 
   # npm prune hangs forever in pnpm-managed node_modules
