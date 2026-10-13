@@ -148,7 +148,7 @@ stdenvNoCC.mkDerivation {
           type = "json";
           url = "https://cdn-assets.mirasim.ai/mirasim/releases/latest.json";
           # The top-level version also includes builds outside the stable channel.
-          path = "stable.linux.version";
+          pointer = "/stable/linux/version";
         };
       }
     );
