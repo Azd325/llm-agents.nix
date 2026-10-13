@@ -734,6 +734,26 @@ Nix packages for AI coding agents and development tools. Automatically updated d
 
 </details>
 <details>
+<summary><strong>hindsight</strong> - Agent memory server that learns from past interactions</summary>
+
+- **Source**: source
+- **License**: MIT
+- **Homepage**: https://github.com/vectorize-io/hindsight
+- **Usage**: `nix run github:numtide/llm-agents.nix#hindsight -- --help`
+- **Nix**: [packages/hindsight/package.nix](packages/hindsight/package.nix)
+
+</details>
+<details>
+<summary><strong>hindsight-control-plane</strong> - Web UI for the Hindsight agent memory server</summary>
+
+- **Source**: source
+- **License**: MIT
+- **Homepage**: https://github.com/vectorize-io/hindsight
+- **Usage**: `nix run github:numtide/llm-agents.nix#hindsight-control-plane -- --help`
+- **Nix**: [packages/hindsight-control-plane/package.nix](packages/hindsight-control-plane/package.nix)
+
+</details>
+<details>
 <summary><strong>ironclaw</strong> - Secure personal AI assistant that protects your data and expands its capabilities on the fly</summary>
 
 - **Source**: source
