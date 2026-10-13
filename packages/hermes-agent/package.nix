@@ -337,11 +337,9 @@ let
       tenacity
       pathspec
       pillow
-      pyyaml
       ruamel-yaml
       tomli-w
       truststore
-      resvg-py
       requests
       jinja2
       pydantic
@@ -592,8 +590,10 @@ python3.pkgs.buildPythonApplication {
     "pillow"
     "croniter"
     "exa-py"
-    "resvg-py"
   ];
+
+  # Only used by upstream's icon generator, which is not installed.
+  pythonRemoveDeps = [ "resvg-py" ];
 
   pythonImportsCheck = [
     "hermes_cli"
@@ -636,7 +636,7 @@ python3.pkgs.buildPythonApplication {
     ${pythonEnv}/bin/python3 -c 'import dotenv, tenacity, openai'
     # Slash workers run HERMES_PYTHON with PYTHONPATH=HERMES_PYTHON_SRC_ROOT.
     PYTHONPATH="$out/${python3.sitePackages}" \
-      ${pythonEnv}/bin/python3 -c 'import tui_gateway.slash_worker, yaml'
+      ${pythonEnv}/bin/python3 -c 'import tui_gateway.slash_worker, ruamel.yaml'
     # #7725: DaemonThreadPoolExecutor mirrors CPython ThreadPoolExecutor
     # internals; assert submit() actually executes work on this Python.
     PYTHONPATH="$out/${python3.sitePackages}" \
