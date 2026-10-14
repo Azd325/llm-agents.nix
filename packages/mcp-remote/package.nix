@@ -10,13 +10,13 @@
 
 buildNpmPackage (finalAttrs: {
   pname = "mcp-remote";
-  version = "0.14.3";
+  version = "0.15.0";
 
   src = fetchFromGitHub {
     owner = "punkpeye";
     repo = "mcp-remote";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-oRsutl0pvt+9IsQ86lr1UgbU7TKJHVoLDLLagutEy58=";
+    hash = "sha256-tXdaY6g1NCTBt52N2hFHJ5XU1gUlm/veJPwGllgIhdA=";
   };
 
   npmDeps = null;
