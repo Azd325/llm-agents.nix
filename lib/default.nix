@@ -324,6 +324,11 @@ inputs."nixpkgs".lib.extend (
         githubId = 101375747;
         name = "YuXiangggg";
       };
+      wtf9880 = {
+        github = "wtf9880";
+        githubId = 231052470;
+        name = "wtf9880";
+      };
     };
   }
 )

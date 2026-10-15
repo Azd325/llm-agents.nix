@@ -551,6 +551,16 @@ Nix packages for AI coding agents and development tools. Automatically updated d
 
 </details>
 <details>
+<summary><strong>pool</strong> - Poolside's coding agent</summary>
+
+- **Source**: binary
+- **License**: unfree
+- **Homepage**: https://poolside.ai
+- **Usage**: `nix run github:numtide/llm-agents.nix#pool -- --help`
+- **Nix**: [packages/pool/package.nix](packages/pool/package.nix)
+
+</details>
+<details>
 <summary><strong>prime-agent</strong> - A self-improving RLM agent for coding workflows and long-running autonomous tasks.</summary>
 
 - **Source**: source
