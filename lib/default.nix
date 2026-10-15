@@ -94,6 +94,11 @@ inputs."nixpkgs".lib.extend (
         githubId = 87764;
         name = "Ben Ford";
       };
+      afjcjsbx = {
+        github = "afjcjsbx";
+        githubId = 10548612;
+        name = "Mauro";
+      };
       odysseus0 = {
         github = "odysseus0";
         githubId = 8635094;
