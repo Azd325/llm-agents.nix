@@ -41,11 +41,14 @@ buildNpmPackage {
   npmFlags = [ "--ignore-scripts" ];
   npmRebuildFlags = [ "--ignore-scripts" ];
 
-  # Replace the embedded PostgreSQL with the one from nixpkgs.
+  # Replace the embedded PostgreSQL with the one from nixpkgs. paperclipai
+  # bundles more than one copy of embedded-postgres; patch every one, since
+  # the platform binaries any unpatched copy imports are removed below.
   postInstall = ''
-        embedded=$(find $out/lib/node_modules -path '*/embedded-postgres/dist/binary.js' -print -quit)
-        test -n "$embedded"
-        cat > "$embedded" <<'EOF'
+        binaries=$(find $out/lib/node_modules -path '*/embedded-postgres/dist/binary.js')
+        test -n "$binaries"
+        while IFS= read -r embedded; do
+          cat > "$embedded" <<'EOF'
     function getBinaries() {
       return Promise.resolve({
         postgres: "${postgresql_18}/bin/postgres",
@@ -56,11 +59,12 @@ buildNpmPackage {
     export default getBinaries;
     EOF
 
-        # nixpkgs PostgreSQL defaults its unix socket to /run/postgresql, which
-        # unprivileged users cannot write to. Keep the socket in the data dir.
-        substituteInPlace "$(dirname "$embedded")/index.js" \
-          --replace-fail "...this.options.postgresFlags," \
-            "'-k', this.options.databaseDir, ...this.options.postgresFlags,"
+          # nixpkgs PostgreSQL defaults its unix socket to /run/postgresql, which
+          # unprivileged users cannot write to. Keep the socket in the data dir.
+          substituteInPlace "$(dirname "$embedded")/index.js" \
+            --replace-fail "...this.options.postgresFlags," \
+              "'-k', this.options.databaseDir, ...this.options.postgresFlags,"
+        done <<<"$binaries"
 
         # Drop the now unused FHS-linked binaries.
         while IFS= read -r scope; do
