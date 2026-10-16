@@ -27,7 +27,7 @@ let
       owner = "NVIDIA";
       repo = "NeMo-Relay";
       tag = version;
-      hash = "sha256-7qt44AFvBkLBWhXO235bUxdNYwHYdiizYBmqT/Bs9Lc=";
+      hash = "sha256-f57Y+bp8q3r9OvY6EVgOHNucW4mXip/Cb6ey99JhP/Y=";
     };
 
     cargoDeps = rustPlatform.fetchCargoVendor {
